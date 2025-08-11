@@ -4,6 +4,7 @@ import Home from './pages/Home';
 import KatalogObat from './pages/KatalogObat';
 import DetailObat from './pages/DetailObat';
 import LandingPage from "./components/LandingPage";
+import AdminObat from './pages/AdminObat';
 
 function App() {
   return (
@@ -12,6 +13,7 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/katalog-obat" element={<KatalogObat />} />
         <Route path="/katalog-obat/:id" element={<DetailObat />} />
+        <Route path="/admin" element={<AdminObat />} />
       </Routes>
     </Router>
   );
