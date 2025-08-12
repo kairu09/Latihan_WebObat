@@ -1,4 +1,4 @@
-const API_BASE_URL = process.env.REACT_APP_API_URL || 'http://localhost:3001/api';
+const API_BASE_URL = 'http://localhost:3000/api';
 
 // GET all obat
 export const getAllObat = async () => {
@@ -29,9 +29,16 @@ export const createObat = async (formData) => {
             method: 'POST',
             body: formData // FormData for file upload
         });
-        if (!response.ok) throw new Error('Failed to create obat');
-        return await response.json();
+        
+        const data = await response.json();
+        
+        if (!response.ok) {
+            throw new Error(data.error || 'Failed to create obat');
+        }
+        
+        return data;
     } catch (error) {
+        console.error('Create API error:', error);
         throw error;
     }
 };
@@ -43,9 +50,16 @@ export const updateObat = async (id, formData) => {
             method: 'PUT',
             body: formData // FormData for file upload
         });
-        if (!response.ok) throw new Error('Failed to update obat');
-        return await response.json();
+        
+        const data = await response.json();
+        
+        if (!response.ok) {
+            throw new Error(data.error || 'Failed to update obat');
+        }
+        
+        return data;
     } catch (error) {
+        console.error('Update API error:', error);
         throw error;
     }
 };
@@ -56,9 +70,16 @@ export const deleteObat = async (id) => {
         const response = await fetch(`${API_BASE_URL}/obat/${id}`, {
             method: 'DELETE'
         });
-        if (!response.ok) throw new Error('Failed to delete obat');
-        return await response.json();
+        
+        const data = await response.json();
+        
+        if (!response.ok) {
+            throw new Error(data.error || 'Failed to delete obat');
+        }
+        
+        return data;
     } catch (error) {
+        console.error('Delete API error:', error);
         throw error;
     }
 };

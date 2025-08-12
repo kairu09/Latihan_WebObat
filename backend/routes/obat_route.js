@@ -32,10 +32,10 @@ const upload = multer({
 });
 
 // Routes
-router.get('/obat', obatController.getAllObat);
-router.get('/obat/:id', obatController.getObatById);
-router.post('/obat', upload.single('gambar'), obatController.createObat);
-router.put('/obat/:id', upload.single('gambar'), obatController.updateObat);
-router.delete('/obat/:id', obatController.deleteObat);
+router.get('/', obatController.getAllObat);
+router.get('/:id', obatController.getObatById);
+router.post('/', upload.single('gambar'), obatController.createObat);
+router.put('/:id', upload.single('gambar'), obatController.updateObat);
+router.delete('/:id', obatController.deleteObat);
 
 module.exports = router;

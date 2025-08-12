@@ -11,6 +11,7 @@ const Home = () => {
           <li><Link to="/katalog-obat" className="hover:text-yellow-400">Katalog</Link></li>
           <li><Link to="/about" className="hover:text-yellow-400">Tentang</Link></li>
           <li><Link to="/contact" className="hover:text-yellow-400">Kontak</Link></li>
+          <li><Link to="/admin/login" className="hover:text-yellow-400 bg-blue-600 px-3 py-1 rounded">Admin</Link></li>
         </ul>
       </nav>
 
@@ -22,12 +23,20 @@ const Home = () => {
         <p className="text-lg md:text-xl mb-6">
           Temukan obat yang Anda butuhkan dengan mudah.
         </p>
-        <Link
-          to="/katalog-obat"
-          className="bg-yellow-400 text-gray-800 px-6 py-2 rounded-md hover:bg-yellow-500 transition duration-200"
-        >
-          Lihat Katalog Obat
-        </Link>
+        <div className="flex flex-col sm:flex-row gap-4">
+          <Link
+            to="/katalog-obat"
+            className="bg-yellow-400 text-gray-800 px-6 py-3 rounded-md hover:bg-yellow-500 transition duration-200 font-semibold"
+          >
+            Lihat Katalog Obat
+          </Link>
+          <Link
+            to="/admin/login"
+            className="bg-white text-blue-600 px-6 py-3 rounded-md hover:bg-gray-100 transition duration-200 font-semibold border border-white"
+          >
+            Kelola Obat (Admin)
+          </Link>
+        </div>
       </header>
 
      

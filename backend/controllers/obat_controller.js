@@ -28,7 +28,7 @@ exports.getObatById = async (req, res) => {
 // CREATE - Add new obat
 exports.createObat = async (req, res) => {
     try {
-        const { nama, harga, deskripsi, stok, kategori } = req.body;
+        const { nama_obat, harga, deskripsi, kategori } = req.body;
         let gambar = null;
 
         if (req.file) {
@@ -36,16 +36,16 @@ exports.createObat = async (req, res) => {
         }
 
         const obat = await Obat.create({
-            nama,
+            nama_obat,
             harga,
             deskripsi,
-            stok,
             kategori,
             gambar
         });
 
         res.status(201).json(obat);
     } catch (error) {
+        console.error('Create error:', error);
         res.status(500).json({ error: error.message });
     }
 };
@@ -54,7 +54,7 @@ exports.createObat = async (req, res) => {
 exports.updateObat = async (req, res) => {
     try {
         const { id } = req.params;
-        const { nama, harga, deskripsi, stok, kategori } = req.body;
+        const { nama_obat, harga, deskripsi, kategori } = req.body;
         
         const obat = await Obat.findByPk(id);
         if (!obat) {
@@ -73,17 +73,24 @@ exports.updateObat = async (req, res) => {
             gambar = req.file.filename;
         }
 
-        await obat.update({
-            nama,
+        // Use the update method from our custom model
+        const updated = await Obat.update(id, {
+            nama_obat,
             harga,
             deskripsi,
-            stok,
             kategori,
             gambar
         });
 
-        res.json(obat);
+        if (updated) {
+            // Fetch the updated obat to return
+            const updatedObat = await Obat.findByPk(id);
+            res.json(updatedObat);
+        } else {
+            res.status(400).json({ error: 'Gagal memperbarui obat' });
+        }
     } catch (error) {
+        console.error('Update error:', error);
         res.status(500).json({ error: error.message });
     }
 };
@@ -106,9 +113,15 @@ exports.deleteObat = async (req, res) => {
             }
         }
 
-        await obat.destroy();
-        res.json({ message: 'Obat berhasil dihapus' });
+        // Use the destroy method from our custom model
+        const deleted = await Obat.destroy(id);
+        if (deleted) {
+            res.json({ message: 'Obat berhasil dihapus' });
+        } else {
+            res.status(400).json({ error: 'Gagal menghapus obat' });
+        }
     } catch (error) {
+        console.error('Delete error:', error);
         res.status(500).json({ error: error.message });
     }
 };
