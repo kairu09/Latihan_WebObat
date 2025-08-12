@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 11, 2025 at 07:16 AM
--- Server version: 10.4.32-MariaDB
--- PHP Version: 8.2.12
+-- Waktu pembuatan: 12 Agu 2025 pada 06.02
+-- Versi server: 10.4.32-MariaDB
+-- Versi PHP: 8.2.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -24,7 +24,7 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Table structure for table `obat`
+-- Struktur dari tabel `obat`
 --
 
 CREATE TABLE `obat` (
@@ -37,35 +37,35 @@ CREATE TABLE `obat` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dumping data for table `obat`
+-- Dumping data untuk tabel `obat`
 --
 
 INSERT INTO `obat` (`id`, `nama_obat`, `kategori`, `deskripsi`, `harga`, `gambar`) VALUES
 (1, 'Paracetamol', 'Analgesik', 'Obat pereda nyeri dan penurun demam ringan.', 5000.00, 'paracetamol.png'),
-(2, 'Loratadine', 'Antihistamin', 'Obat untuk meredakan gejala alergi seperti bersin, hidung meler, dan gatal-gatal.', 8000.00, 'loratadine.jpg'),
 (3, 'Amoxicillin', 'Antibiotik', 'Obat untuk mengatasi berbagai infeksi bakteri ringan hingga sedang.', 12000.00, 'Amoxicillin.png'),
 (4, 'Lansoprazole', 'Penurun Asam Lambung', 'Digunakan untuk mengatasi GERD dan tukak lambung.', 1800.00, 'lansoprazole.jpeg'),
-(5, 'Cetirizine', 'Antihistamin', 'Mengurangi gejala alergi seperti bersin dan gatal.', 9500.00, 'cetirizine.jpeg');
+(5, 'Cetirizine', 'Antihistamin', 'Mengurangi gejala alergi seperti bersin dan gatal.', 9500.00, 'cetirizine.jpeg'),
+(6, 'Udin Sedunia', 'Vitamin', 'apa', 287000.00, '1754971133061-608260607.png');
 
 --
 -- Indexes for dumped tables
 --
 
 --
--- Indexes for table `obat`
+-- Indeks untuk tabel `obat`
 --
 ALTER TABLE `obat`
   ADD PRIMARY KEY (`id`);
 
 --
--- AUTO_INCREMENT for dumped tables
+-- AUTO_INCREMENT untuk tabel yang dibuang
 --
 
 --
--- AUTO_INCREMENT for table `obat`
+-- AUTO_INCREMENT untuk tabel `obat`
 --
 ALTER TABLE `obat`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
